@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+	<title>آموزشگاه زبان | ایران زمین،منظومه</title>
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="">
+	<meta name="description" content="Eduport - قالب HTML دوره آنلاین و آموزش">
+
+	<!-- Dark mode -->
+	<script>
+		const storedTheme = localStorage.getItem('theme')
+ 
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme
+			}
+			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+		}
+
+		const setTheme = function (theme) {
+			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+			} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+			}
+		}
+
+		setTheme(getPreferredTheme())
+
+		window.addEventListener('DOMContentLoaded', () => {
+		    var el = document.querySelector('.theme-icon-active');
+			if(el != 'undefined' && el != null) {
+				const showActiveTheme = theme => {
+				const activeThemeIcon = document.querySelector('.theme-icon-active use')
+				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+					element.classList.remove('active')
+				})
+
+				btnToActive.classList.add('active')
+				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+			}
+
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (storedTheme !== 'light' || storedTheme !== 'dark') {
+					setTheme(getPreferredTheme())
+				}
+			})
+
+			showActiveTheme(getPreferredTheme())
+
+			document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+						const theme = toggle.getAttribute('data-bs-theme-value')
+						localStorage.setItem('theme', theme)
+						setTheme(theme)
+						showActiveTheme(theme)
+					})
+				})
+
+			}
+		})
+		
+	</script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/tiny-slider/tiny-slider.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/glightbox/css/glightbox.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/choices/css/choices.min.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style-rtl.css">
+
+</head>
+
+<body>
+
+<!-- Header START -->
+<header class="navbar-light navbar-sticky header-static">
+	<!-- Nav START -->
+	<nav class="navbar navbar-expand-xl">
+		<div class="container-fluid px-3 px-xl-5">
+			<!-- Logo START -->
+			<a class="navbar-brand" href="index.html">
+				<img class="light-mode-item navbar-brand-item" src="assets/images/logo.jpg" alt="logo">
+			</a>
+			<!-- Logo END -->
+
+			<!-- Responsive navbar toggler -->
+			<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</button>
+
+			<!-- Main navbar START -->
+			<div class="navbar-collapse w-100 collapse" id="navbarCollapse">
+
+
+				<!-- Nav Main menu START -->
+				<ul class="navbar-nav navbar-nav-scroll me-auto">
+					<!-- Nav item 1 Demos -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle active" href="#" id="demoMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">صفحه اصلی</a>
+						<ul class="dropdown-menu" aria-labelledby="demoMenu">
+							<li> <a class="dropdown-item active" href="index.html"><i class="bi bi bi-house-door fa-fw me-1"></i>خانه</a> </li>
+						</ul>
+					</li>
+
+					<!-- Nav item 2 Pages -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">معرفی آموزشگاه</a>
+						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+							<li> <a class="dropdown-item" href="about.html">درباره ایران زمین و منظومه</a></li>
+							<li> <a class="dropdown-item" href="manage.html">مدیریت آموزشگاه</a></li>
+							<li> <a class="dropdown-item" href="teachers.html">مدرسین</a></li>
+						</ul>
+					</li>
+
+					<!-- Nav item 3 Account -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">دوره های آموزشی</a>
+						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
+							<!-- Dropdown submenu -->
+							<li class="dropdown-submenu dropend">
+								<a class="dropdown-item dropdown-toggle" href="#"><i class="fas fa-user-tie fa-fw me-1"></i>دوره های مقدماتی</a>
+								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
+									<li> <a class="dropdown-item" href="instructor-dashboard.html"><i class="bi bi-grid-fill fa-fw me-1"></i>Little Friend</a> </li>
+									<li> <a class="dropdown-item" href="instructor-manage-course.html"><i class="bi bi-grid-fill fa-fw me-1"></i>First Friends</a> </li>
+								</ul>
+							</li>
+
+							<!-- Dropdown submenu -->
+								<li class="dropdown-submenu dropend">
+								<a class="dropdown-item dropdown-toggle" href="#"><i class="fas fa-user-graduate fa-fw me-1"></i>دوره های متوسطه</a>
+								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
+									<li> <a class="dropdown-item" href="student-dashboard.html"><i class="bi bi-grid-fill fa-fw me-1"></i>Big English</a> </li>
+									<li> <a class="dropdown-item" href="student-subscription.html"><i class="bi bi-grid-fill fa-fw me-1"></i>GOt It</a> </li>
+								</ul>
+							</li>
+							<!-- Dropdown submenu -->
+								<li class="dropdown-submenu dropend">
+								<a class="dropdown-item dropdown-toggle" href="#"><i class="fas fa-user-graduate fa-fw me-1"></i>دوره های پیشرفته</a>
+								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
+									<li> <a class="dropdown-item" href="student-payment-info.html"><i class="bi bi-grid-fill fa-fw me-1">Touchstone</i></a> </li>
+									<li> <a class="dropdown-item" href="student-bookmark.html"><i class="bi bi-grid-fill fa-fw me-1"></i>Viewpoint</a> </li>
+								</ul>
+							</li>
+							<!-- Dropdown submenu -->
+								<li class="dropdown-submenu dropend">
+								<a class="dropdown-item dropdown-toggle" href="#"><i class="fas fa-user-graduate fa-fw me-1"></i>دوره های ویژه</a>
+								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
+									<li> <a class="dropdown-item" href="#"><i class="bi bi-grid-fill fa-fw me-1"></i>TTC</a> </li>
+									<li> <a class="dropdown-item" href="#"><i class="bi bi-grid-fill fa-fw me-1"></i>TOEFL</a> </li>
+									<li> <a class="dropdown-item" href="#"><i class="bi bi-grid-fill fa-fw me-1"></i>IELTS</a> </li>
+								</ul>
+							</li>
+					
+						</ul>
+					</li>
+
+					<!-- Nav item 3 link-->
+					<li class="nav-item"><a class="nav-link" href="contact-us.html">تماس با ما</a></li>
+					
+					<li class="nav-item"><a class="nav-link" href="#">کلاس های آنلاین</a></li>
+
+				</ul>
+				<!-- Nav Main menu END -->
+
+
+			</div>
+			<!-- Main navbar END -->
+
+			<!-- Profile START -->
+			<a class="navbar-brand" href="index.html">
+				<img class="light-mode-item navbar-brand-item" src="assets/images/logo1.jpg" alt="logo">
+				<!-- <img class="dark-mode-item navbar-brand-item" src="assets/images/logo.jpg" alt="logo"> -->
+			</a>
+			<!-- Profile START -->
+		</div>
+	</nav>
+	<!-- Nav END -->
+</header>
+<!-- Header END -->
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+<!-- =======================
+Page intro START -->
+<section class="bg-light py-0 py-sm-5">
+	<div class="container">
+		<div class="row py-5">
+			<div class="col-lg-8">
+				<!-- Badge -->
+				<h6 class="mb-3 font-base bg-primary text-white py-2 px-4 rounded-2 d-inline-block">زبان انگلیسی</h6>
+				<!-- Title -->
+				<h1 class="fs-3">مجموعه Viewpoint</h1>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Page intro END -->
+
+<!-- =======================
+Page content START -->
+<section class="pb-0 py-lg-5">
+	<div class="container">
+		<div class="row">
+			<!-- Main content START -->
+			<div class="col-lg-8">
+				<div class="card shadow rounded-2 p-0">
+					<!-- Tabs START -->
+					<div class="card-header border-bottom px-4 py-3">
+						<ul class="nav nav-pills nav-tabs-line py-0" id="course-pills-tab" role="tablist">
+							<!-- Tab item -->
+							<li class="nav-item me-2 me-sm-4" role="presentation">
+								<button class="nav-link mb-2 mb-md-0 active" id="course-pills-tab-1" data-bs-toggle="pill" data-bs-target="#course-pills-1" type="button" role="tab" aria-controls="course-pills-1" aria-selected="true">توضیحات</button>
+							</li>
+							<!-- Tab item -->
+							<li class="nav-item me-2 me-sm-4" role="presentation">
+								<button class="nav-link mb-2 mb-md-0" id="course-pills-tab-2" data-bs-toggle="pill" data-bs-target="#course-pills-2" type="button" role="tab" aria-controls="course-pills-2" aria-selected="false">دانلود کتاب </button>
+							</li>
+
+						</ul>
+					</div>
+					<!-- Tabs END -->
+
+					<!-- Tab contents START -->
+					<div class="card-body p-4">
+						<div class="tab-content pt-2" id="course-pills-tabContent">
+							<!-- Content START -->
+							<div class="tab-pane fade show active" id="course-pills-1" role="tabpanel" aria-labelledby="course-pills-tab-1">
+								<!-- Course detail START -->
+								<h5 class="mb-3">توضیحات این مجموعه</h5>
+								<p class="mb-3">به مجموعه ی آموزشی <strong>
+									Viewpoint </strong> خوش آمدید.</p>
+								<p class="mb-3">سری کتاب‌های View point (ویو پوینت)، دوره‌ای ترمیک دو سطحی برای آموزش زبان انگلیسی امریکن است که برای تدریس تمامی مهارت‌های چهارگانه به بزرگسالان در موسسات و آموزشگاه‌های سراسر دنیا مورد استفاده قرار می‌گیرد. که ما نیز از این کتاب بهره برده ایمم و بعد از اتمام سری تاچ ستون این سری از کتب که از انتشارات کمبریج منتشر شده است را تدریس می کنیم. این کتاب شامل 2 سطح است که برای زبان آموزان سطوح بالاتر از متوسط مورد تدریس قرار می گیرد.
+								</p>
+
+
+							</div>
+							<!-- Content END -->
+
+														<!-- Content START --> 
+							<!-- Content START DOWNLOAD BOOKS --> 
+							<div class="tab-pane fade" id="course-pills-2" role="tabpanel" aria-labelledby="course-pills-tab-2">
+								<!-- Course accordion START -->
+								<div class="accordion accordion-icon accordion-bg-light" id="accordionExample2">
+
+									<div class="bistscript-bg">
+										<div class="tp"> دانلود مجموعه کتاب های Viewpoint </div>
+										<div class="clear"></div>
+										<div class="txt">
+											<div class="boxdown">
+												<span class="boxtext"> کتاب Viewpoint 1 </span>
+												<div class="btm link"><a href="https://iranzaminelc.ir/downloads/books/viewpoint_1.pdf"> لينک دانلود مستقيم </a></div>
+												<div class="btm size"> حجم : 45مگابايت </div>
+											</div>
+											<div class="boxdown">
+												<span class="boxtext"> کتاب Viewpoint 2 </span>
+												<div class="btm link"><a href="https://iranzaminelc.ir/downloads/books/viewpoint_2.pdf"> لينک دانلود مستقيم </a></div>
+												<div class="btm size"> حجم : 45مگابايت </div>
+											</div>
+											<hr>
+											<div class="boxdown">
+												<span class="boxtext"> فایل صوتی Viewpoint 1 </span>
+												<div class="btm link"><a href="https://iranzaminelc.ir/downloads/audio/viewpoint_1_audio.zip"> لينک دانلود مستقيم </a></div>
+												<div class="btm size"> حجم : 45مگابايت </div>
+											</div>
+											<div class="boxdown">
+												<span class="boxtext"> فایل صوتی Viewpoint 2 </span>
+												<div class="btm link"><a href="https://iranzaminelc.ir/downloads/audio/viewpoint_2_audio.zip"> لينک دانلود مستقيم </a></div>
+												<div class="btm size"> حجم : 45مگابايت </div>
+											</div>
+
+										</div>
+										</div>
+								</div>
+								<!-- Course accordion END -->
+							</div>
+							<!-- Content END -->
+
+
+						</div>
+					</div>
+					<!-- Tab contents END -->
+				</div>
+			</div>
+			<!-- Main content END -->
+
+			<!-- Right sidebar START -->
+			<div class="col-lg-4 pt-5 pt-lg-0">
+				<div class="row mb-5 mb-lg-0">
+					<div class="col-md-6 col-lg-12">
+						<!-- Video START -->
+						<div class="card shadow p-2 mb-4 z-index-9">
+							<div class="overflow-hidden rounded-3">
+								<img src="assets/images/courses/4by3/view.jpg" class="card-img" alt="course image">
+								
+							</div>
+		
+							<!-- Card body -->
+							<div class="card-body px-3">
+								<!-- Info -->
+								<div class="d-flex justify-content-between align-items-center">
+								</div>
+							</div>
+						</div>
+						<!-- Video END -->
+
+						<!-- Course info START -->
+						<div class="card card-body shadow p-4 mb-4">
+							<!-- Title -->
+							<h4 class="mb-3 fs-5">مشخصات دوره</h4>
+							<ul class="list-group list-group-borderless">
+								<li class="list-group-item d-flex justify-content-between align-items-center">
+									<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-signal text-primary"></i>سطح دوره</span>
+									<span>پیشرفته</span>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center">
+									<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-globe text-primary"></i>زبان</span>
+									<span>انگلیسی</span>
+								</li>
+								<li class="list-group-item d-flex justify-content-between align-items-center">
+									<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-medal text-primary"></i>مدرک</span>
+									<span>دارد</span>
+								</li>
+							</ul>
+						</div>
+						<!-- Course info END -->
+					</div>
+
+				</div><!-- Row End -->
+			</div>
+			<!-- Right sidebar END -->
+
+		</div><!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Page content END -->
+
+
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- =======================
+Footer START -->
+<footer class="pt-5">
+	<div class="container">
+		<!-- Row START -->
+		<div class="row g-4">
+
+			<!-- Widget 1 START -->
+			<div class="col-lg-3">
+				<!-- logo -->
+				<a class="me-0" href="index.html">
+					<img class="light-mode-item h-90px" src="assets/images/logo1.jpg" alt="logo">
+				</a>
+				<!-- Social media icon -->
+				<ul class="list-inline mb-0 mt-3">
+					<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-facebook" href="#"><i class="fab fa-fw fa-facebook-f"></i></a> </li>
+					<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-instagram" href="https://www.instagram.com/iranzaminmanzoume?igsh=eW12MzhqenhnODdj"><i class="fab fa-fw fa-instagram"></i></a> </li>
+					<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-twitter" href="#"><i class="fab fa-fw fa-twitter"></i></a> </li>
+					<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-linkedin" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a> </li>
+				</ul>
+			</div>
+			<!-- Widget 1 END -->
+
+			<!-- Widget 2 START -->
+			<div class="col-lg-6">
+				<div class="row g-4">
+					<!-- Link block -->
+					<div class="col-6 col-md-4">
+						<h5 class="mb-2 mb-md-4">لینک های مفید</h5>
+						<ul class="nav flex-column">
+							<li class="nav-item"><a class="nav-link" href="about.html">درباره ما</a></li>
+							<li class="nav-item"><a class="nav-link" href="contact-us.html">تماس با ما</a></li>
+							<li class="nav-item"><a class="nav-link" href="faq.html">سوالات متداول</a></li>
+						</ul>
+					</div>
+
+
+					<!-- Link block -->
+					<div class="col-6 col-md-4">
+						<h5 class="mb-2 mb-md-4">لینک های سریع</h5>
+						<ul class="nav flex-column">
+							<li class="nav-item"><a class="nav-link" href="#">مشاوره رایگان</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">شرایط و قوانین</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- Widget 2 END -->
+
+			<!-- Widget 3 START -->
+			<div class="col-lg-3">
+				<h5 class="mb-2 mb-md-4">تماس با ما</h5>
+				<!-- Time -->
+				<p class="mb-2">
+					تلفن: <span class="h6 fw-light ms-2">۰۹۹۰۱۵۳۵۴۰۲ _ ۰۹۹۲۱۱۴۶۹۹۷</span>
+				</p>
+
+				<p class="mb-0">ایمیل:<span class="h6 fw-light ms-2">myrkh2011@gmail.com</span></p>
+				<br>
+				<p class="mb-0">آدرس:<span class="h6 fw-light ms-2 ">قم خیابان یادگار امام، اول تقاطع شهدای شاد قلی خان، بین کوچه ۳و ۵ اموزشگاه زبانهای خارجی منظومه و ایران زمین</span></p>
+			</div> 
+			<!-- Widget 3 END -->
+		</div><!-- Row END -->
+
+		<!-- Divider -->
+		<hr class="mt-4 mb-0">
+
+		<!-- Bottom footer -->
+		<div class="py-3">
+			<div class="container px-0">
+				<div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-md-left">
+					<!-- copyright text -->
+					<div class="text-primary-hover"><span > All Rights Reserved. Design & Developed By <span class="alish">Ali Shiri</span></span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- =======================
+Footer END -->
+					
+<!-- Modal START -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg">
+		<div class="modal-content">
+			<div class="modal-header border-0 bg-transparent">
+				<!-- Close button -->
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<!-- Modal body -->
+			<div class="modal-body px-5 pb-5 position-relative overflow-hidden">
+
+				<!-- Element -->
+				<figure class="position-absolute bottom-0 end-0 mb-n4 me-n4 d-none d-sm-block">
+					<img src="assets/images/element/01.svg" alt="element">
+				</figure>
+				<figure class="position-absolute top-0 end-0 z-index-n1 opacity-2">
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="818.6px" height="235.1px" viewBox="0 0 818.6 235.1">
+						<path class="fill-info" d="M735,226.3c-5.7,0.6-11.5,1.1-17.2,1.7c-66.2,6.8-134.7,13.7-192.6-16.6c-34.6-18.1-61.4-47.9-87.3-76.7 c-21.4-23.8-43.6-48.5-70.2-66.7c-53.2-36.4-121.6-44.8-175.1-48c-13.6-0.8-27.5-1.4-40.9-1.9c-46.9-1.9-95.4-3.9-141.2-16.5 C8.3,1.2,6.2,0.6,4.2,0H0c3.3,1,6.6,2,10,3c46,12.5,94.5,14.6,141.5,16.5c13.4,0.6,27.3,1.1,40.8,1.9 c53.4,3.2,121.5,11.5,174.5,47.7c26.5,18.1,48.6,42.7,70,66.5c26,28.9,52.9,58.8,87.7,76.9c58.3,30.5,127,23.5,193.3,16.7 c5.8-0.6,11.5-1.2,17.2-1.7c26.2-2.6,55-4.2,83.5-2.2v-1.2C790,222,761.2,223.7,735,226.3z"></path>
+					</svg>
+				</figure>
+				<!-- Title -->
+				<h2 class="fs-3">خرید دوره پیشرفته <span class="text-success">350,000 تومان</span></h2>
+				<p>چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد</p>
+				<!-- Content -->
+				<div class="row mb-3 item-collapse">
+					<div class="col-sm-6">
+						<ul class="list-group list-group-borderless">
+							<li class="list-group-item text-body"> <i class="bi bi-patch-check-fill text-success"></i>برنامه درسی با کیفیت بالا</li>
+							<li class="list-group-item text-body"> <i class="bi bi-patch-check-fill text-success"></i>تقویم برنامه ریزی</li>
+							<li class="list-group-item text-body"> <i class="bi bi-patch-check-fill text-success"></i>به روزرسانی رایگان</li>
+						</ul>
+					</div>
+					<div class="col-sm-6">
+						<ul class="list-group list-group-borderless">
+							<li class="list-group-item text-body"> <i class="bi bi-patch-check-fill text-success"></i>دوره های متوسط</li>
+							<li class="list-group-item text-body"> <i class="bi bi-patch-check-fill text-success"></i>بیش از 200 دوره آنلاین</li>
+						</ul>
+					</div>
+				</div>
+				<!-- Button -->
+				<a href="#" class="btn btn-lg btn-orange-soft">خرید دوره</a>
+			</div>
+			<!-- Modal footer -->
+			<div class="modal-footer d-block bg-info">
+				<div class="d-sm-flex justify-content-sm-between align-items-center text-center text-sm-start">
+					<!-- Social media button -->
+					<ul class="list-inline mb-0 social-media-btn mb-2 mb-sm-0">
+						<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-facebook" href="#"><i class="fab fa-fw fa-facebook-f"></i></a> </li>
+						<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-instagram" href="#"><i class="fab fa-fw fa-instagram"></i></a> </li>
+						<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-twitter" href="#"><i class="fab fa-fw fa-twitter"></i></a> </li>
+						<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-linkedin" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a> </li>
+					</ul>
+				<!-- Contact info -->
+				<div>
+					<p class="mb-1 small"><a href="#" class="text-white"><i class="far fa-envelope fa-fw me-2"></i>example@gmail.com</a></p>
+					<p class="mb-0 small"><a href="#" class="text-white"><i class="fas fa-headset fa-fw me-2"></i>09380417520</a></p>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>  
+<!-- Modal END -->
+
+<!-- Back to top -->
+<div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
+
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Vendors -->
+<script src="assets/vendor/tiny-slider/tiny-slider-rtl.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.js"></script>
+<script src="assets/vendor/choices/js/choices.min.js"></script>
+
+<!-- Template Functions -->
+<script src="assets/js/functions.js"></script>
+
+</body>
+
+</html>

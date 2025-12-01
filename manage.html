@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+	<title>آموزشگاه زبان | ایران زمین،منظومه</title>
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="">
+	<meta name="description" content="Eduport - قالب HTML دوره آنلاین و آموزش">
+
+	<!-- Dark mode -->
+	<script>
+		const storedTheme = localStorage.getItem('theme')
+ 
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme
+			}
+			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+		}
+
+		const setTheme = function (theme) {
+			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+			} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+			}
+		}
+
+		setTheme(getPreferredTheme())
+
+		window.addEventListener('DOMContentLoaded', () => {
+		    var el = document.querySelector('.theme-icon-active');
+			if(el != 'undefined' && el != null) {
+				const showActiveTheme = theme => {
+				const activeThemeIcon = document.querySelector('.theme-icon-active use')
+				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+					element.classList.remove('active')
+				})
+
+				btnToActive.classList.add('active')
+				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+			}
+
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (storedTheme !== 'light' || storedTheme !== 'dark') {
+					setTheme(getPreferredTheme())
+				}
+			})
+
+			showActiveTheme(getPreferredTheme())
+
+			document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+						const theme = toggle.getAttribute('data-bs-theme-value')
+						localStorage.setItem('theme', theme)
+						setTheme(theme)
+						showActiveTheme(theme)
+					})
+				})
+
+			}
+		})
+		
+	</script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="assets/images/favicon.ico">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/tiny-slider/tiny-slider.css">
+	<link rel="stylesheet" type="text/css" href="assets/vendor/choices/css/choices.min.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style-rtl.css">
+
+</head>
+
+<body>
+
+<!-- Header START -->
+<header class="navbar-light navbar-sticky header-static">
+	<!-- Nav START -->
+	<nav class="navbar navbar-expand-xl">
+		<div class="container-fluid px-3 px-xl-5">
+			<!-- Logo START -->
+			<a class="navbar-brand" href="index.html">
+				<img class="light-mode-item navbar-brand-item" src="assets/images/logo.jpg" alt="logo">
+			</a>
+			<!-- Logo END -->
+
+			<!-- Responsive navbar toggler -->
+			<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</button>
+
+			<!-- Main navbar START -->
+			<div class="navbar-collapse w-100 collapse" id="navbarCollapse">
+
+
+				<!-- Nav Main menu START -->
+				<ul class="navbar-nav navbar-nav-scroll me-auto">
+					<!-- Nav item 1 Demos -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle active" href="#" id="demoMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">صفحه اصلی</a>
+						<ul class="dropdown-menu" aria-labelledby="demoMenu">
+							<li> <a class="dropdown-item active" href="index.html"><i class="bi bi bi-house-door fa-fw me-1"></i>خانه</a> </li>
+						</ul>
+					</li>
+
+					<!-- Nav item 2 Pages -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">معرفی آموزشگاه</a>
+						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+							<li> <a class="dropdown-item" href="about.html">درباره ایران زمین و منظومه</a></li>
+							<li> <a class="dropdown-item" href="manage.html">مدیریت آموزشگاه</a></li>
+							<li> <a class="dropdown-item" href="teachers.html">مدرسین</a></li>
+						</ul>
+					</li>
+
+					<!-- Nav item 3 Account -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="accounntMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">دوره های آموزشی</a>
+						<ul class="dropdown-menu" aria-labelledby="accounntMenu">
+							<!-- Dropdown submenu -->
+							<li class="dropdown-submenu dropend">
+								<a class="dropdown-item dropdown-toggle" href="#"><i class="fas fa-user-tie fa-fw me-1"></i>دوره های مقدماتی</a>
+								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
+									<li> <a class="dropdown-item" href="instructor-dashboard.html"><i class="bi bi-grid-fill fa-fw me-1"></i>Little Friend</a> </li>
+									<li> <a class="dropdown-item" href="instructor-manage-course.html"><i class="bi bi-grid-fill fa-fw me-1"></i>First Friends</a> </li>
+								</ul>
+							</li>
+
+							<!-- Dropdown submenu -->
+								<li class="dropdown-submenu dropend">
+								<a class="dropdown-item dropdown-toggle" href="#"><i class="fas fa-user-graduate fa-fw me-1"></i>دوره های متوسطه</a>
+								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
+									<li> <a class="dropdown-item" href="student-dashboard.html"><i class="bi bi-grid-fill fa-fw me-1"></i>Big English</a> </li>
+									<li> <a class="dropdown-item" href="student-subscription.html"><i class="bi bi-grid-fill fa-fw me-1"></i>GOt It</a> </li>
+								</ul>
+							</li>
+							<!-- Dropdown submenu -->
+								<li class="dropdown-submenu dropend">
+								<a class="dropdown-item dropdown-toggle" href="#"><i class="fas fa-user-graduate fa-fw me-1"></i>دوره های پیشرفته</a>
+								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
+									<li> <a class="dropdown-item" href="student-payment-info.html"><i class="bi bi-grid-fill fa-fw me-1">Touchstone</i></a> </li>
+									<li> <a class="dropdown-item" href="student-bookmark.html"><i class="bi bi-grid-fill fa-fw me-1"></i>Viewpoint</a> </li>
+								</ul>
+							</li>
+							<!-- Dropdown submenu -->
+								<li class="dropdown-submenu dropend">
+								<a class="dropdown-item dropdown-toggle" href="#"><i class="fas fa-user-graduate fa-fw me-1"></i>دوره های ویژه</a>
+								<ul class="dropdown-menu dropdown-menu-start" data-bs-popper="none">
+									<li> <a class="dropdown-item" href="#"><i class="bi bi-grid-fill fa-fw me-1"></i>TTC</a> </li>
+									<li> <a class="dropdown-item" href="#"><i class="bi bi-grid-fill fa-fw me-1"></i>TOEFL</a> </li>
+									<li> <a class="dropdown-item" href="#"><i class="bi bi-grid-fill fa-fw me-1"></i>IELTS</a> </li>
+								</ul>
+							</li>
+					
+						</ul>
+					</li>
+
+					<!-- Nav item 3 link-->
+					<li class="nav-item"><a class="nav-link" href="contact-us.html">تماس با ما</a></li>
+
+					<li class="nav-item"><a class="nav-link" href="#">کلاس های آنلاین</a></li>
+
+				</ul>
+				<!-- Nav Main menu END -->
+
+
+			</div>
+			<!-- Main navbar END -->
+
+			<!-- Profile START -->
+			<a class="navbar-brand" href="index.html">
+				<img class="light-mode-item navbar-brand-item" src="assets/images/logo1.jpg" alt="logo">
+				<!-- <img class="dark-mode-item navbar-brand-item" src="assets/images/logo.jpg" alt="logo"> -->
+			</a>
+			<!-- Profile START -->
+		</div>
+	</nav>
+	<!-- Nav END -->
+</header>
+<!-- Header END -->
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+	
+<!-- =======================
+Main Banner START -->
+<section class="position-relative pt-5">
+
+	<!-- SVG decoration -->
+	<figure class="position-absolute bottom-0 start-0 d-none d-lg-block">
+		<svg style="transform: scale(-1,1)" width="822.2px" height="301.9px" viewBox="0 0 822.2 301.9">
+			<path class="fill-warning opacity-5" d="M752.5,51.9c-4.5,3.9-8.9,7.8-13.4,11.8c-51.5,45.3-104.8,92.2-171.7,101.4c-39.9,5.5-80.2-3.4-119.2-12.1 c-32.3-7.2-65.6-14.6-98.9-13.9c-66.5,1.3-128.9,35.2-175.7,64.6c-11.9,7.5-23.9,15.3-35.5,22.8c-40.5,26.4-82.5,53.8-128.4,70.7 c-2.1,0.8-4.2,1.5-6.2,2.2L0,301.9c3.3-1.1,6.7-2.3,10.2-3.5c46.1-17,88.1-44.4,128.7-70.9c11.6-7.6,23.6-15.4,35.4-22.8 c46.7-29.3,108.9-63.1,175.1-64.4c33.1-0.6,66.4,6.8,98.6,13.9c39.1,8.7,79.6,17.7,119.7,12.1C634.8,157,688.3,110,740,64.6 c4.5-3.9,9-7.9,13.4-11.8C773.8,35,797,16.4,822.2,1l-0.7-1C796.2,15.4,773,34,752.5,51.9z"/>
+		</svg>
+	</figure>
+
+	<figure class="position-absolute top-0 end-0">
+		<svg style="transform: scale(-1,1)" width="822.2px" height="301.9px" viewBox="0 0 822.2 301.9">
+			<path class="fill-success opacity-5" d="M752.5,51.9c-4.5,3.9-8.9,7.8-13.4,11.8c-51.5,45.3-104.8,92.2-171.7,101.4c-39.9,5.5-80.2-3.4-119.2-12.1 c-32.3-7.2-65.6-14.6-98.9-13.9c-66.5,1.3-128.9,35.2-175.7,64.6c-11.9,7.5-23.9,15.3-35.5,22.8c-40.5,26.4-82.5,53.8-128.4,70.7 c-2.1,0.8-4.2,1.5-6.2,2.2L0,301.9c3.3-1.1,6.7-2.3,10.2-3.5c46.1-17,88.1-44.4,128.7-70.9c11.6-7.6,23.6-15.4,35.4-22.8 c46.7-29.3,108.9-63.1,175.1-64.4c33.1-0.6,66.4,6.8,98.6,13.9c39.1,8.7,79.6,17.7,119.7,12.1C634.8,157,688.3,110,740,64.6 c4.5-3.9,9-7.9,13.4-11.8C773.8,35,797,16.4,822.2,1l-0.7-1C796.2,15.4,773,34,752.5,51.9z"/>
+		</svg>
+	</figure>
+
+	<!-- Content START -->
+	<div class="container">
+		<div class="row align-items-center justify-content-between">
+			<!-- Left content START -->
+			<div class="col-lg-6 position-relative z-index-9">
+        <h6 class="mb-3 font-base"><i class="bi bi-pin-map-fill me-2"></i>آموزشگاه زبان های خارجی ایران زمین و منظومه</h6>
+        <h1 class="h2">مدیریت آموزشگاه</h1>
+				<p class="lead mb-4">   مدیریت اموزشگاه  به عهده خانم مریم خسروخانی می باشد. ایشان دانش آموخته رشته زبان انگلیسی دانشگاه آزاد اسلامی واحد قم در مقطع کارشناسی بوده و همچنین در مقطع کارشناسی ارشد ارتباطات سازمانی از دانشگاه UPM مالزی می باشند. خانم خسروخانی دارای سوابق موفق تدریس در اموزشگاه  مختلف در ایران و مالزی می باشند علاوه براین ایشان چند جلد کتاب ترجمه و چاپ و یا گرداوری نموده اند.</p>
+
+		</div>
+	</div>
+	<!-- Content END -->
+</section>
+<!-- =======================
+Main Banner END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- =======================
+Footer START -->
+<footer class="pt-5">
+	<div class="container">
+		<!-- Row START -->
+		<div class="row g-4">
+
+			<!-- Widget 1 START -->
+			<div class="col-lg-3">
+				<!-- logo -->
+				<a class="me-0" href="index.html">
+					<img class="light-mode-item h-90px" src="assets/images/logo1.jpg" alt="logo">
+				</a>
+				<!-- Social media icon -->
+				<ul class="list-inline mb-0 mt-3">
+					<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-facebook" href="#"><i class="fab fa-fw fa-facebook-f"></i></a> </li>
+					<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-instagram" href="https://www.instagram.com/iranzaminmanzoume?igsh=eW12MzhqenhnODdj"><i class="fab fa-fw fa-instagram"></i></a> </li>
+					<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-twitter" href="#"><i class="fab fa-fw fa-twitter"></i></a> </li>
+					<li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-linkedin" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a> </li>
+				</ul>
+			</div>
+			<!-- Widget 1 END -->
+
+			<!-- Widget 2 START -->
+			<div class="col-lg-6">
+				<div class="row g-4">
+					<!-- Link block -->
+					<div class="col-6 col-md-4">
+						<h5 class="mb-2 mb-md-4">لینک های مفید</h5>
+						<ul class="nav flex-column">
+							<li class="nav-item"><a class="nav-link" href="about.html">درباره ما</a></li>
+							<li class="nav-item"><a class="nav-link" href="contact-us.html">تماس با ما</a></li>
+							<li class="nav-item"><a class="nav-link" href="faq.html">سوالات متداول</a></li>
+						</ul>
+					</div>
+
+
+					<!-- Link block -->
+					<div class="col-6 col-md-4">
+						<h5 class="mb-2 mb-md-4">لینک های سریع</h5>
+						<ul class="nav flex-column">
+							<li class="nav-item"><a class="nav-link" href="#">مشاوره رایگان</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">شرایط و قوانین</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- Widget 2 END -->
+
+			<!-- Widget 3 START -->
+			<div class="col-lg-3">
+				<h5 class="mb-2 mb-md-4">تماس با ما</h5>
+				<!-- Time -->
+				<p class="mb-2">
+					تلفن: <span class="h6 fw-light ms-2">۰۹۹۰۱۵۳۵۴۰۲ _ ۰۹۹۲۱۱۴۶۹۹۷</span>
+				</p>
+
+				<p class="mb-0">ایمیل:<span class="h6 fw-light ms-2">myrkh2011@gmail.com</span></p>
+				<br>
+				<p class="mb-0">آدرس:<span class="h6 fw-light ms-2 ">قم خیابان یادگار امام، اول تقاطع شهدای شاد قلی خان، بین کوچه ۳و ۵ اموزشگاه زبانهای خارجی منظومه و ایران زمین</span></p>
+			</div> 
+			<!-- Widget 3 END -->
+		</div><!-- Row END -->
+
+		<!-- Divider -->
+		<hr class="mt-4 mb-0">
+
+		<!-- Bottom footer -->
+		<div class="py-3">
+			<div class="container px-0">
+				<div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-md-left">
+					<!-- copyright text -->
+					<div class="text-primary-hover"><span > All Rights Reserved. Design & Developed By <span class="alish">Ali Shiri</span></span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- =======================
+Footer END -->
+
+<!-- Back to top -->
+<div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
+
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Vendors -->
+<script src="assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
+<script src="assets/vendor/tiny-slider/tiny-slider-rtl.js"></script>
+<script src="assets/vendor/choices/js/choices.min.js"></script>
+
+<!-- Template Functions -->
+<script src="assets/js/functions.js"></script>
+
+</body>
+
+</html>
